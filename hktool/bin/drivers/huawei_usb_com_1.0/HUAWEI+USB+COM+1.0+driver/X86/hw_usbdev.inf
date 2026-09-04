@@ -1,0 +1,111 @@
+; Windows Virtual Serial Port Setup File
+; Copyright (c) 2002,2003 Huawei Incorporated
+; Manufacturer: Huawei Incorporated
+;
+; This INF file installs a virtual COM port on Win2K system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %HUAWEI%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer = 04/20/2012,1.03.00.00
+CatalogFile= hw_usbdev.cat
+
+[SourceDisksNames]
+1000 = %HWSRCDISK%,"",,
+
+[SourceDisksFiles]
+hw_usbdev.sys = 1000
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%HUAWEI% = HWSerialPort
+
+[HWSerialPort]
+%HUAWEI00% = HWPortInstallSP,    USB\VID_12d1&PID_1031
+%HUAWEI01% = HWPortInstallSPTMO, USB\VID_12d1&PID_1030
+
+;for window logo test
+%HUAWEI00% = HWPortInstallSP,    USB\VID_12D1&PID_1033&MI_04
+%HUAWEI01% = HWPortInstallSPTMO, USB\VID_12D1&PID_1032&MI_04
+
+%HUAWEI90% = HWPortInstall,  USB\VID_12D1&PID_1800
+%HUAWEI90% = HWPortInstall,  USB\VID_12D1&PID_1801
+
+%HUAWEI90% = HWPortInstall,  USB\VID_12D1&PID_361A&MI_00
+%HUAWEI90% = HWPortInstall,  USB\VID_12D1&PID_362A
+
+; >>>>>>>>>>>>>>>>>>>>> Installation SP Section <<<<<<<<<<<<<<<<<<<<<
+
+[HWPortInstallSP.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+[HWPortInstallSP.NT.Services]
+AddService = hw_usbdev,  0x00000002, HWPort_Service_InstSP
+
+[HWPort_Service_InstSP]
+DisplayName   = "HUAWEISERSP"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_usbdev.sys
+
+; ###### Installation SP-TMO Section ######
+
+[HWPortInstallSPTMO.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+[HWPortInstallSPTMO.NT.Services]
+AddService = hw_usbdev,  0x00000002, HWPort_Service_InstSPTMO
+
+[HWPort_Service_InstSPTMO]
+DisplayName   = "HUAWEISERSPTMO"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_usbdev.sys
+
+;################# Union Installation Section #####################
+
+[HWPortInstall.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+[HWPortInstall.NT.Services]
+AddService = hw_usbdev,  0x00000002, HWPort_Service_Install
+
+[HWPort_Service_Install]
+DisplayName   = "HUAWEISERSP"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_usbdev.sys
+
+[CopyFileSection00]
+hw_usbdev.sys
+
+[All00]
+HKR,,NTMPDriver,,hw_usbdev.sys
+HKR,,PortIdentify,,HWPNP
+
+
+[AddReg.NT]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[Strings]
+HUAWEI         = "Huawei Incorporated"
+HWSRCDISK      = "Multimedia USB Driver Disk"
+HUAWEISERSP    = "HuaWei Mobile dummy USB PNP Device"
+HUAWEISERSPTMO = "SmartPhone dummy USB PNP Device (T-Mobile)"
+HUAWEI00       = "Mobile Connect - USB Device"
+HUAWEI01       = "T-Mobile Mobile Connect - USB Device"
+HUAWEI90       = "Huawei HandSet Connect - USB Device"

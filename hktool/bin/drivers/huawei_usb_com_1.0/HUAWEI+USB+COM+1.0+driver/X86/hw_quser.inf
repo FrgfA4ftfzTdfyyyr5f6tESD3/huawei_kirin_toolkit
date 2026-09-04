@@ -1,0 +1,525 @@
+; Windows Virtual Serial Port Setup File
+; Copyright (c) 2002,2003 Huawei Incorporated
+; Manufacturer: Huawei Incorporated
+;
+; This INF file installs a virtual COM port on Win2K system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %HUAWEI%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer = 08/26/2014,2.00.00.00
+CatalogFile= hw_quser.cat
+
+[SourceDisksNames]
+1000 = %HWSRCDISK%,"",,
+
+[SourceDisksFiles]
+hw_quusbmdm.sys = 1000
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%HUAWEI% = HWSerialPort
+
+[HWSerialPort]
+%HUAWEI010% = HWPortInstallSPTMO02,USB\VID_12D1&PID_1034&MI_01
+%HUAWEI04%  = HWPortInstallSPTMO04,USB\VID_12D1&PID_1034&MI_04
+%HUAWEI05%  = HWPortInstallSPTMO05,USB\VID_12D1&PID_1034&MI_05
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1035&MI_01
+%HUAWEI04%  = HWPortInstallSP04,   USB\VID_12D1&PID_1035&MI_04
+%HUAWEI05%  = HWPortInstallSP05,   USB\VID_12D1&PID_1035&MI_05
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_105C&MI_02
+%HUAWEI04%  = HWPortInstallSP04,   USB\VID_12D1&PID_105C&MI_04
+
+;for window logo test
+%HUAWEI000% = HWPortInstallSPTMO02,USB\VID_12D1&PID_1032&MI_01
+%HUAWEI00%  = HWPortInstallSP02,   USB\VID_12D1&PID_1033&MI_01
+
+
+;
+%HUAWEI11% = HWPortInstallFP02,  USB\VID_12d1&PID_1802&MI_01
+%HUAWEI12% = HWPortInstallFP0A,  USB\VID_12d1&PID_1802&MI_02
+%HUAWEI11% = HWPortInstallFP02,  USB\VID_12d1&PID_1803&MI_01
+%HUAWEI12% = HWPortInstallFP0A,  USB\VID_12d1&PID_1803&MI_02
+%HUAWEI14% = HWPortInstallFP02,  USB\VID_12d1&PID_1804&MI_01
+%HUAWEI15% = HWPortInstallFP0A,  USB\VID_12d1&PID_1804&MI_02
+%HUAWEI14% = HWPortInstallFP02,  USB\VID_12d1&PID_1805&MI_01
+;
+
+%HUAWEI23% = HWPortInstallFWT1,  USB\VID_12d1&PID_1010&MI_01
+%HUAWEI24% = HWPortInstallFWT102,USB\VID_12d1&PID_1010&MI_02
+%HUAWEI24% = HWPortInstallFWT1,  USB\VID_12d1&PID_1011&MI_01
+%HUAWEI21% = HWPortInstallFWT0,  USB\VID_12d1&PID_101D&MI_01
+%HUAWEI22% = HWPortInstallFWT02, USB\VID_12d1&PID_101D&MI_02
+%HUAWEI20% = HWPortInstallFWT02, USB\VID_12d1&PID_101E&MI_01
+
+
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_03
+%HUAWEI34%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_04
+%HUAWEI35%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_05
+%HUAWEI36%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_06
+%HUAWEI37%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_07
+%HUAWEI31%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_08
+%HUAWEI32%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_09
+%HUAWEI38%  = HWPortInstallSP02,   USB\VID_12D1&PID_1057&MI_0a
+
+%HUAWEI204% = HWPortInstallFWT1,  USB\VID_12d1&PID_1001&MI_01
+%HUAWEI203% = HWPortInstallFWT102,USB\VID_12d1&PID_1001&MI_02
+%HUAWEI203% = HWPortInstallFWT102,USB\VID_12d1&PID_1003&MI_01
+
+%HUAWEI01% = HWPortInstallSP02, USB\VID_12D1&PID_3619&MI_04
+%HUAWEI01% = HWPortInstallSP02, USB\VID_12D1&PID_3629&MI_03
+
+;for mediapad
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_3612&MI_04
+%HUAWEI04%  = HWPortInstallSP04,   USB\VID_12D1&PID_3612&MI_01
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_3622&MI_03
+%HUAWEI04%  = HWPortInstallSP04,   USB\VID_12D1&PID_3622&MI_01
+%HUAWEI06%  = HWPortInstallSP04,   USB\VID_12D1&PID_3650&MI_00
+
+;for mtk sp
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1066&MI_01
+
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1068&MI_01
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1069&MI_01
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_106A
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_106B&MI_00
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_0005&MI_02
+%HUAWEI01%  = HWPortInstallSP02,   USB\VID_12D1&PID_1070&MI_02
+
+
+;mtk preloader/vcom
+%VCOM_AP%        = HWPortInstallSP02, USB\VID_12d1&PID_1DF5&MI_00
+%VCOM_AP%        = HWPortInstallSP02, USB\VID_12d1&PID_1DF9&MI_00
+%VCOM_MODEM%     = HWPortInstallSP02, USB\VID_12d1&PID_1DF9&MI_01
+%VCOM_AP%        = HWPortInstallSP02, USB\VID_12d1&PID_2005&MI_00
+%VCOM_AP%        = HWPortInstallSP02, USB\VID_12d1&PID_2009&MI_00
+%VCOM_MODEM%     = HWPortInstallSP02, USB\VID_12d1&PID_2009&MI_01
+
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_0005&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_0006
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_200A&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_200D&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_200E&MI_01
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_200F&MI_01
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2010&MI_03
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2011&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2012&MI_01
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2013&MI_01
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2018&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_2019&MI_03
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_201A&MI_02
+%VCOM%           = HWPortInstallSP02, USB\VID_12D1&PID_201B&MI_03
+
+;pnp2.1
+%HUAWEI33%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_11&Prot_02
+%HUAWEI34%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_11&Prot_03
+%HUAWEI33%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_12&Prot_02
+%HUAWEI34%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_12&Prot_03
+%HUAWEI33%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_13&Prot_02
+%HUAWEI34%  = HWPortInstallSP02,   USB\VID_12D1&Subclass_13&Prot_03
+
+
+;For fake acm port(ndis/mass/mtp)
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_0005&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_100E&MI_01
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_100E&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_100F&MI_01
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_100F&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1010&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1011&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_101D&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_101D&MI_03
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_101E&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_101E&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_101F&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1035&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1051
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1052&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1053
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1054&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1055
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1056&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_105C&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_105C&MI_06
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1067&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1067&MI_01
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1068&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1069&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_106C&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_106C&MI_01
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1070&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1071&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_360F&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_361F 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3614&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3619&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3629&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3612&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3622&MI_00 
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1033&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1035&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1032&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1034&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1055
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_1056&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1802&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1803&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1804&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1805&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_101E&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_101D&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1010&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1011&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1001&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12d1&PID_1003&MI_00
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3619&MI_03
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_361E
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3629&MI_02
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3612&MI_03
+%HUAWEI200%  = HWPortInstallCustom,   USB\VID_12D1&PID_3622&MI_02
+
+
+
+; ===================== Installation Section Begin =============================
+; ===================== Installation FP Section ================================
+[HWPortInstallFP02.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+[HWPortInstallFP02.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFP
+
+[HWPortInstallFP0A.NT]
+CopyFiles = CopyFileSection00
+AddReg = All0A, AddReg.NT
+
+[HWPortInstallFP0A.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFP
+
+[HW_USBSerialServiceFP]
+DisplayName   = %SERVICE%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+
+; =================== Installation FWT0(FC612E) Section ========================
+[HWPortInstallFWT0.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+[HWPortInstallFWT0.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFWT0
+
+[HWPortInstallFWT02.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+[HWPortInstallFWT02.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFWT0
+
+[HW_USBSerialServiceFWT0]
+DisplayName   = %SERVICE%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+
+; ============== Installation FWT1(ETS6630-FP615H) Section =====================
+[HWPortInstallFWT1.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+[HWPortInstallFWT1.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFWT1
+
+[HWPortInstallFWT102.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+[HWPortInstallFWT102.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceFWT1
+
+[HW_USBSerialServiceFWT1]
+DisplayName   = %SERVICE%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+
+;=====================Installation SP Section ===================================
+[HWPortInstallSP02.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+[HWPortInstallSP02.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSP
+
+[HWPortInstallSP04.NT]
+CopyFiles = CopyFileSection00
+AddReg = All04, AddReg.NT
+
+[HWPortInstallSP04.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSP
+
+[HWPortInstallSP05.NT]
+CopyFiles = CopyFileSection00
+AddReg = All05, AddReg.NT
+
+[HWPortInstallSP05.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSP
+
+[HW_USBSerialServiceSP]
+DisplayName   = %SERVICE%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+
+; ======================= Installation SP-TMO Section ============================
+[HWPortInstallSPTMO02.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+[HWPortInstallSPTMO02.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSPTMO
+
+[HWPortInstallSPTMO04.NT]
+CopyFiles = CopyFileSection00
+AddReg = All04, AddReg.NT
+
+[HWPortInstallSPTMO04.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSPTMO
+
+[HWPortInstallSPTMO05.NT]
+CopyFiles = CopyFileSection00
+AddReg = All05, AddReg.NT
+
+[HWPortInstallSPTMO05.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSPTMO
+
+
+[HWPortInstallCustom.NT]
+CopyFiles = CopyFileSection00
+AddReg = All06, AddReg
+
+[HWPortInstallCustom.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSPTMO
+
+[HWPortInstallComport.NT]
+CopyFiles = CopyFileSection00
+AddReg = All0B, AddReg
+
+[HWPortInstallComport.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceSPTMO
+
+[HW_USBSerialServiceSPTMO]
+DisplayName   = %SERVICE%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+;
+;>>>>>>>>>>>>>>>>>>>>>>>>> The Union Version <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[HWPortInstall.NT]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg.NT
+
+;HWPCUI
+[HWPortInstall02.NT]
+CopyFiles = CopyFileSection00
+AddReg = All02, AddReg.NT
+
+;HWDIAG
+[HWPortInstall03.NT]
+CopyFiles = CopyFileSection00
+AddReg = All03, AddReg.NT
+
+;HWDBAPTER
+[HWPortInstall04.NT]
+CopyFiles = CopyFileSection00
+AddReg = All04, AddReg.NT
+
+;HWDBCONSOLE
+[HWPortInstall05.NT]
+CopyFiles = CopyFileSection00
+AddReg = All05, AddReg.NT
+
+;HWGPS
+[HWPortInstall08.NT]
+CopyFiles = CopyFileSection00
+AddReg = All08, AddReg.NT
+
+;HWRMNET
+[HWPortInstall09.NT]
+CopyFiles = CopyFileSection00
+AddReg = All09, AddReg.NT
+
+;HWNMEA
+[HWPortInstall0A.NT]
+CopyFiles = CopyFileSection00
+AddReg = All0A, AddReg.NT
+
+
+
+[HWPortInstall.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall02.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall03.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall04.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall05.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall08.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall09.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HWPortInstall0A.NT.Services]
+AddService = HWHandSetProLine,  0x00000002, HW_USBSerialServiceUnion
+
+[HW_USBSerialServiceUnion]
+DisplayName   = "HWPLUSBSERUNION"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_quusbmdm.sys
+;AddReg        = PowerReg
+;
+; ======================== Installation Section End ====================================
+[CopyFileSection00]
+hw_quusbmdm.sys,,,0x20
+
+[All00]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+
+[All02]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWPCUI
+
+[All03]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWDIAG
+
+[All04]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWDBAPTER
+
+[All05]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWDBCONSOLE
+
+[All06]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWFAKE
+
+[All08]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWGPS
+
+[All09]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWRMNET
+
+[All0A]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWNMEA
+
+[All0B]
+HKR,,NTMPDriver,,hw_quusbmdm.sys
+HKR,,PortIdentify,,HWCOM
+
+[AddReg.NT]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+;[PowerReg]
+;HKR,,QCDriverResident,0x00010001,1
+
+[Strings]
+HUAWEI   = "Huawei Incorporated"
+HWSRCDISK = "HUAWEI Multimedia USB Driver Disk"
+SERVICE  = "HUAWEI ProductLine USB Serial Driver"
+;
+HWUSBSERSPTMO = "USB Device for Legacy Serial Communication (T-Mobile)"
+HWUSBSERSP = "USB Device for Legacy Serial Communication (Normal)"
+HUAWEI00      = "Android Adapter PCUI (for Logo Test)"
+HUAWEI000     = "T-Mobile 3G Phone PCUI (for Logo Test)"
+HUAWEI01      = "Android Adapter PCUI"
+HUAWEI010     = "T-Mobile 3G Phone PCUI"
+;HUAWEI02     = ""
+HUAWEI04      = "DBAdapter Reserved Interface"
+HUAWEI05      = "DBConsole Reserved Interface"
+HUAWEI06      = "HUAWEI USB COM 1.0"
+
+;
+HWUSBSERFP = "Huawei FP Handset USB Modem and USB Serial"
+HUAWEI11 = "HUAWEI CDMA Handset - Application Interface"
+HUAWEI12 = "HUAWEI CDMA Handset - NMEA"
+HUAWEI14 = "HUAWEI FP Handset - PC UI Interface"
+HUAWEI15 = "HUAWEI FP Handset - NMEA"
+;
+HWUSBSERFWT0 = "High Speed USB Modem and USB Serial For Normal"
+HWUSBSERFWT1 = "Huawei Mobile Adapter USB Modem and USB Serial"
+HUAWEI20 = "Mobile Adapter - PC UI Interface"
+HUAWEI21 = "DBAdapter - Reserved Interface"
+HUAWEI22 = "DBAdapter - PC UI Interface"
+HUAWEI23 = "Mobile Adapter - ETS Application Interface"
+HUAWEI24 = "Mobile Adapter - ETS PC UI Interface"
+
+
+HUAWEI31      = "HUAWEI Mobile Connect - Application Interface"
+HUAWEI32      = "HUAWEI Mobile Connect - GPS Interface"
+HUAWEI33      = "HUAWEI Mobile Connect - 3G PC UI Interface"
+HUAWEI34      = "HUAWEI Mobile Connect - 3G Application Interface"
+HUAWEI35      = "HUAWEI Mobile Connect - 3G GPS Interface"
+HUAWEI36      = "HUAWEI Mobile Connect - Bluetooth Interface"
+HUAWEI37      = "HUAWEI Mobile Connect - Control Interface"
+HUAWEI38      = "HUAWEI Mobile Connect - CDMA Modem Interface"
+
+HUAWEI200     = "HUAWEI Mobile Connect - Fake Acm Interface"
+HUAWEI201     = "HUAWEI USB COM 1.0"
+HUAWEI203 = "HUAWEI Mobile Connect - 3G PC UI Interface"
+HUAWEI204 = "HUAWEI Mobile Connect - 3G Application Interface"
+;
+;>>>New Union programed Products Later <<<
+HWUSBSERUNION = "Huawei HandSet USB Modem and USB Serial"
+;HUAWEI90 = "Huawei HandSet - Modem"
+HUAWEI91  = "Huawei HandSet - PC UI Interface"
+HUAWEI92  = "Huawei HandSet - Diagnostics Port"
+HUAWEI93  = "Huawei HandSet - DBAdapter Reserved Interface"
+HUAWEI94  = "Huawei HandSet - DBConsole Reserved Interface"
+;HUAWEI95 = "Huawei HandSet - Sooner Single ADB Interface"
+;HUAWEI96 = "Huawei HandSet - ADB Interface"
+HUAWEI97  = "Huawei HandSet - GPS Interface"
+HUAWEI98  = "Huawei HandSet - RMNET Interface"
+HUAWEI99  = "Huawei HandSet - NMEA Port"
+
+VCOM_BOOTROM        = "MediaTek USB Port"
+VCOM_PRELOADER      = "MediaTek PreLoader USB VCOM (Android)"
+VCOM_DA        	    = "MediaTek DA USB VCOM (Android)"
+VCOM                = "MediaTek USB VCOM (Android)"
+VCOM_MODEM          = "Modem USB COM 1.0"
+VCOM_AP             = "AP USB COM 1.0"
+
+

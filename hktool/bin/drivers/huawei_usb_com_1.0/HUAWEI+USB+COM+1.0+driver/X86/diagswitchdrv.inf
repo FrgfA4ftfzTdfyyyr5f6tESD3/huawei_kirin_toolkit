@@ -1,0 +1,83 @@
+; Windows Virtual Serial Port Setup File
+; Copyright (c) 2002,2003 Huawei Incorporated
+; Manufacturer: Huawei Incorporated
+;
+; This INF file installs a virtual COM port on Win2K system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %HUAWEI%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer  = 03/06/2013,2.00.00.00
+CatalogFile.NTx86 = diagswitchdrv86.cat
+CatalogFile.NTamd64 =diagswitchdrva64.cat
+
+[SourceDisksNames]
+1 = %HWSRCDISK%,,,
+2 = %HWSRCDISK%,,,
+
+[SourceDisksFiles.x86]
+diagswitchdrv.sys = 1
+
+[SourceDisksFiles.amd64]
+diagswitchdrv.sys = 2
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%HUAWEI% = QcomSerialPort, NTx86, NTamd64
+
+[QcomSerialPort.NTx86]
+;for switch to diag prot in manufature
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_1037
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_0001
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1038&MI_00
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1052&MI_02
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1059&MI_02
+
+[QcomSerialPort.NTamd64]
+;for switch to diag prot in manufature
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_1037
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_0001
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1038&MI_00
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1052&MI_02
+%QcomDevice01% = QportInstall00, USB\VID_12D1&PID_1059&MI_02
+
+; ###### Installation Section ######
+
+[QportInstall00]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg
+
+[QportInstall00.Services]
+AddService = diagswitchdrv,  0x00000002, Qport_Service_Inst00
+
+[Qport_Service_Inst00]
+DisplayName   = "SmartPhone dummy USB switch diag driver"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\diagswitchdrv.sys
+
+[CopyFileSection00]
+diagswitchdrv.sys
+
+[All00]
+HKR,,NTMPDriver,,diagswitchdrv.sys
+HKR,,PortIdentify,,HWPNP
+
+[AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[Strings]
+HUAWEI   = "HUAWEI Incorporated"
+HWSRCDISK = "Multimedia USB Driver Disk"
+QcomDevice00 = "Swtich Single to diag port - USB Device"
+QcomDevice01 = "Swtich Composite to diag port - USB Device"
+

@@ -1,0 +1,106 @@
+;
+; usbser.sys
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MEDIATEK%
+DriverVer=06/10/2014,2.0.1136.0
+CatalogFile   = mtk_cdc_acm.cat
+[Manufacturer]
+%MEDIATEK%=DeviceList,NTx86,NTamd64
+
+[DestinationDirs]
+DefaultDestDir=12
+
+
+;------------------------------------------------------------------------------
+;  Windows 2000/XP/Vista-32bit Sections
+;------------------------------------------------------------------------------
+
+[DriverInstall.nt]
+include=mdmcpq.inf
+AddReg=DriverInstall.nt.AddReg
+
+
+[DriverInstall.nt.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,USBSER.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.nt.Services]
+include=mdmcpq.inf 
+AddService=usbser, 0x00000002, DriverService.nt
+
+[DriverInstall.nt.HW]
+include=mdmcpq.inf
+
+
+[DriverService.nt]
+DisplayName=%SERVICE%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\USBSER.sys
+
+;------------------------------------------------------------------------------
+;  Vista/Win7-64bit Sections
+;------------------------------------------------------------------------------
+
+[DriverInstall.NTamd64]
+include=mdmcpq.inf
+AddReg=DriverInstall.NTamd64.AddReg
+
+[DriverInstall.NTamd64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,USBSER.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.NTamd64.Services]
+include=mdmcpq.inf 
+AddService=mtk_usbser, 0x00000002, DriverService.NTamd64
+
+[DriverInstall.NTamd64.HW]
+include=mdmcpq.inf
+
+[DriverService.NTamd64]
+DisplayName=%SERVICE%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\USBSER.sys
+
+
+;------------------------------------------------------------------------------
+;  Vendor and Product ID Definitions
+;------------------------------------------------------------------------------
+
+[DeviceList.NTx86]
+; BootRom & Preloader VCOM
+%VCOM_BOOTROM%=DriverInstall, USB\Vid_0e8d&Pid_0003
+%VCOM_PRELOADER%=DriverInstall, USB\Vid_0e8d&Pid_2000
+%VCOM_DA%=DriverInstall, USB\Vid_0e8d&Pid_2001
+%VCOM_DA%=DriverInstall, USB\Vid_0e8d&Pid_2007
+
+
+[DeviceList.NTamd64]
+; BootRom & Preloader VCOM
+%VCOM_BOOTROM%=DriverInstall, USB\Vid_0e8d&Pid_0003
+%VCOM_PRELOADER%=DriverInstall, USB\Vid_0e8d&Pid_2000
+%VCOM_DA%=DriverInstall, USB\Vid_0e8d&Pid_2001
+%VCOM_DA%=DriverInstall, USB\Vid_0e8d&Pid_2007
+
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+MEDIATEK            = "MediaTek Inc."
+GADGET              = "Android Gadget VCOM Driver"
+SERVICE             = "MTK ProductLine Vitual UART Driver"
+VCOM_BOOTROM        = "MediaTek USB Port"
+VCOM_PRELOADER      = "MediaTek PreLoader USB VCOM (Android)"
+VCOM_DA        	    = "MediaTek DA USB VCOM (Android)"

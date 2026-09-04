@@ -1,0 +1,110 @@
+;                     
+; Windows Mobile USB Host Setup File
+; Copyright (c) Microsoft Corporation
+;
+; WceIS.INF -- This is the inf installation script for the stand-alone
+;                  release of RNDIS-over-USB host driver for Windows Mobile USB Function devices for Internet Sharing application.
+;
+
+[Version]
+Signature           = "$Windows NT$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider            = %Microsoft%
+DriverVer           = 10/28/2005,5.1.2600.2781
+CatalogFile.NT      = WceIS.cat
+
+[Manufacturer]
+%Microsoft%          = WindowsCeDevices,NT.5.1,NTx86,NTamd64
+
+[WindowsCeDevices]
+%WindowsCeDevice%    = RNDIS, USB\Class_E0&SubClass_01&Prot_03
+
+[WindowsCeDevices.NT.5.1]
+%WindowsCeDevice%    = RNDIS.NT.5.1, USB\Class_E0&SubClass_01&Prot_03
+
+[WindowsCeDevices.NTx86]
+%WindowsCeDevice%    = RNDIS.NT.5.1, USB\Class_E0&SubClass_01&Prot_03
+
+[WindowsCeDevices.NTamd64]
+%WindowsCeDevice%    = RNDIS.NT.5.1, USB\Class_E0&SubClass_01&Prot_03
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+; Windows XP specific sections -----------------------------------
+
+[RNDIS.NT.5.1]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+include         = netrndis.inf
+needs           = Usb_Rndis.ndi
+
+;[RNDIS_CopyFiles_NT.5.1]
+; no copyfiles - the files are already in place for XP and above
+
+[RNDIS.NT.5.1.Services]
+include     = netrndis.inf
+needs       = Usb_Rndis.ndi.Services
+
+; Windows 2000 specific sections ---------------------------------
+
+[RNDIS.NT]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+DriverVer       = 11/09/2005,5.2.3790.1454
+AddReg          = RNDIS_AddReg_NT
+CopyFiles       = RNDIS_CopyFiles_NT
+
+[RNDIS.NT.Services]
+AddService = usb_rndisy, 2, RNDIS_ServiceInst_NT, RNDIS_EventLog
+
+[RNDIS_CopyFiles_NT]
+; no rename of files on Windows 2000, use the 'y' names as is
+usb8023y.sys, , , 0 
+rndismpy.sys, , , 0 
+
+[RNDIS_ServiceInst_NT]
+DisplayName     = %ServiceDisplayName%
+ServiceType     = 1 
+StartType       = 3 
+ErrorControl    = 1 
+ServiceBinary   = %12%\usb8023y.sys    
+LoadOrderGroup  = NDIS
+AddReg          = RNDIS_WMI_AddReg_NT
+
+[RNDIS_WMI_AddReg_NT]
+HKR, , MofImagePath, 0x00020000, "System32\drivers\rndismpy.sys"
+
+; DO NOT MODIFY ServiceName!!
+[RNDIS_AddReg_NT]
+HKR, ,                  ReclaimRecv,    0x00010001, 1
+HKR, Ndi,               Service,        0, "usb_rndisy"
+HKR, Ndi\Interfaces,    UpperRange,     2, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange,     2, "ethernet"
+
+; References -------------------------------------------
+
+[RNDIS_EventLog]
+AddReg = RNDIS_EventLog_AddReg
+
+[RNDIS_EventLog_AddReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[SourceDisksNames]
+1=%SourceDisk%,,1
+
+[SourceDisksFiles]
+usb8023y.sys=1
+rndismpy.sys=1
+
+[DestinationDirs]
+RNDIS_CopyFiles_NT    = 12
+
+; DO NOT MODIFY ServiceDisplayName!!
+[Strings]
+ServiceDisplayName    = "USB RNDIS Adapter"
+Microsoft             = "Microsoft Corporation"
+WindowsCeDevice       = "Windows Mobile-based Internet Sharing Device"
+SourceDisk            = "Windows Mobile-based Internet Sharing Device Driver Install Disk"

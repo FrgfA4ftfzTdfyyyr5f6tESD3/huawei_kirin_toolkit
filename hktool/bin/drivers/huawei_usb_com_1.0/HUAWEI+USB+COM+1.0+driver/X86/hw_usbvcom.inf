@@ -1,0 +1,89 @@
+; Windows Virtual Serial Port Setup File
+; Copyright (c) 2002,2003 Huawei Incorporated
+; Manufacturer: Huawei Incorporated
+;
+; This INF file installs a virtual COM port on Win2K system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %HUAWEI%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer  = 08/10/2014,2.0.0.0
+CatalogFile = hw_usbvcom.cat
+
+
+[SourceDisksNames]
+1 = %HWSRCDISK%,,,
+2 = %HWSRCDISK%,,,
+
+[SourceDisksFiles.x86]
+hw_usbvcom.sys = 1
+
+[SourceDisksFiles.amd64]
+hw_usbvcom.sys = 2
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%HUAWEI% = QcomSerialPort, NTx86, NTamd64
+
+[QcomSerialPort.NTx86]
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3609
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_360b&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_360b&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3613&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3613&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a0b&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a0b&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a13&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a13&MI_02
+
+[QcomSerialPort.NTamd64]
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3609
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_360b&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_360b&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3613&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3613&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a0b&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a0b&MI_02
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a13&MI_03
+%QcomDevice00% = QportInstall00, USB\VID_12d1&PID_3a13&MI_02
+
+; ###### Installation Section ######
+
+[QportInstall00]
+CopyFiles = CopyFileSection00
+AddReg = All00, AddReg
+
+[QportInstall00.Services]
+AddService = HSPL_usbvcom,  0x00000002, Qport_Service_Inst00
+
+[Qport_Service_Inst00]
+DisplayName   = "SmartPhone ctrl fake USB switch driver"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\hw_usbvcom.sys
+
+[CopyFileSection00]
+hw_usbvcom.sys
+
+[All00]
+HKR,,NTMPDriver,,hw_usbvcom.sys
+HKR,,PortIdentify,,HWPNP
+
+[AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[Strings]
+HUAWEI   = "HUAWEI Incorporated"
+HWSRCDISK = "HUAWEI COM Diskette"
+QcomDevice00 = "HUAWEI USB COM 1.0"
+
+

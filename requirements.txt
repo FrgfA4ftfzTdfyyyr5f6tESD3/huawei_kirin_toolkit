@@ -1,0 +1,41 @@
+# =============================================================================
+# Huawei & Kirin Universal Toolkit - Requirements Specification
+# Software Version: v6.2.0 Free Edition
+# Python Environment: Python 3.9+ (64-bit on Windows 10/11 recommended)
+# =============================================================================
+
+# Core GUI Engine (Qt6 Architecture & High-DPI Rendering)
+PySide6>=6.5.0
+shiboken6>=6.5.0
+
+# Cryptography, Checksums & Partition Parsing
+cryptography>=39.0.0
+pycryptodome>=3.19.0
+
+# Hardware Detection, USB & Low-Level Serial Communication
+pyserial>=3.5
+pyusb>=1.2.1
+adb-shell>=0.4.4
+
+# Networking & Companion Background Direct Fetching
+requests>=2.28.0
+
+# Terminal Interface, Progress & Logging Helpers
+rich>=13.0.0
+colorama>=0.4.6
+tqdm>=4.65.0
+
+# =============================================================================
+# SYSTEM PREREQUISITES & HARDWARE DRIVERS (External to pip)
+# =============================================================================
+# 1. Operating System:
+#    - Windows 10 or Windows 11 (64-bit).
+#
+# 2. USB Serial Driver for Hardware Testpoint:
+#    - Certified HUAWEI USB COM 1.0 Driver (VID 0x12D1, PID 0x3609).
+#    - Ingestable directly via the toolkit's Driver Studio using pnputil.
+#    - On 64-bit Windows, BCD TESTSIGNING may be toggled via the toolkit.
+#
+# 3. Official Huawei Fastboot Engine:
+#    - Official HiSuite Fastboot binary (autodetected in C:\Program Files (x86)\HiSuite\hwtools)
+#    - Or Android Platform Tools Fastboot binary available in the system PATH.

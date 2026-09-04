@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+dumps/
+tools/*
+!tools/.gitkeep
+*.log
+.vscode/
+.idea/
